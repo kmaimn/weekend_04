@@ -3,79 +3,82 @@ var router = express.Router();
 var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/weekend_04';
 
-router.get('/', function(req, res){
-  pg.connect(connectionString, function (err, client, done){
-    if (err){
+router.get('/', function (req, res) {
+  pg.connect(connectionString, function (err, client, done) {
+    if (err) {
       res.sendStatus(500);
     }
 
-    client.query('SELECT * FROM todo ORDER BY id ASC', function (err, result){
+    client.query('SELECT * FROM todo ORDER BY completed ASC', function (err, result) {
       done();
 
-      if (err){
+      if (err) {
         res.sendStatus(500);
       }
+
       res.send(result.rows);
     });
   });
 });
 
-router.post('/', function(req, res){
+router.post('/', function (req, res) {
   var item = req.body;
   console.log(item);
 
-  pg.connect(connectionString, function(err, client, done){
-    if (err){
+  pg.connect(connectionString, function (err, client, done) {
+    if (err) {
       res.sendStatus(500);
     }
 
-    client.query('INSERT INTO todo (todo, completed) ' + 'VALUES ($1, $2)', [item.todoItem, item.completed], function (err, result){
+    client.query('INSERT INTO todo (todo, completed) ' +
+                'VALUES ($1, $2)', [item.todoItem, item.completed],
+                function (err, result) {
       done();
 
-      if (err){
+      if (err) {
         res.sendStatus(500);
-      }else{
+      }else {
         res.sendStatus(201);
       }
     });
   });
 });
 
-router.put('/:id', function(req, res){
+router.put('/:id', function (req, res) {
   var id = req.params.id;
   var item = req.body;
 
-  pg.connect(connectionString, function (err, client, done){
-    if (err){
+  pg.connect(connectionString, function (err, client, done) {
+    if (err) {
       res.sendStatus(500);
     }
 
-    client.query('UPDATE todo ' + 'SET completed = NOT completed '+ 'WHERE id = $1',
-    [id], function (err, result){
+    client.query('UPDATE todo ' + 'SET completed = NOT completed ' + 'WHERE id = $1',
+    [id], function (err, result) {
       done();
 
-      if(err) {
+      if (err) {
         console.log('err', err);
         res.sendStatus(500);
-      }else{
+      }else {
         res.sendStatus(200);
       }
     });
   });
 });
 
-router.delete('/:id', function(req, res){
+router.delete('/:id', function (req, res) {
   var id = req.params.id;
 
-  pg.connect(connectionString, function (err, client, done){
-    if (err){
+  pg.connect(connectionString, function (err, client, done) {
+    if (err) {
       res.sendStatus(500);
     }
 
-    client.query('DELETE FROM todo ' + 'WHERE id = $1', [id], function (err, result){
+    client.query('DELETE FROM todo ' + 'WHERE id = $1', [id], function (err, result) {
       done();
 
-      if(err){
+      if (err) {
         res.sendStatus(500);
         return;
       }

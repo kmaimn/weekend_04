@@ -1,5 +1,5 @@
 h1{
-  color: blue;
+  color: orangered;
 }
 
 #completed{
@@ -14,12 +14,17 @@ h1{
 span{
   font-weight: bold;
 }
+
 .toggleSpan{
-  text-decoration: line-through;
+  /*text-decoration: line-through;*/
   font-style: italic;
-  font-weight: lighter;
+  border: 1px dashed black;
+  background-color: limegreen;
+  margin-left: 5px;
+  padding-right: 2px;
 }
 
-.span{
-  background-color: green;
+.test{
+  opacity: .5;
+  cursor: not-allowed;
 }
