@@ -1,0 +1,25 @@
+h1{
+  color: blue;
+}
+
+#completed{
+  margin-right: 5px;
+}
+
+#delete{
+  margin: 0 5px 0 5px;
+
+}
+
+span{
+  font-weight: bold;
+}
+.toggleSpan{
+  text-decoration: line-through;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.span{
+  background-color: green;
+}
