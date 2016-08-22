@@ -30,7 +30,7 @@ function getItems() {
         function strikeThrough() {
           if (item.completed === true) {
             $el.append('<span class="toggleSpan">THIS TASK IS DONE!!</span>');
-            $('.completed').toggleClass('test');
+            // $('.completed').toggleClass('test');
 
             //change class is suppoed to change the button class to not allow mouse
             //hovers and lower opacity..doesn't work;
