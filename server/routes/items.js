@@ -16,6 +16,7 @@ router.get('/', function (req, res) {
         res.sendStatus(500);
       }
 
+      //any result from the query;
       res.send(result.rows);
     });
   });

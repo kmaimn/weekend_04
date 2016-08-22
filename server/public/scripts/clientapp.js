@@ -17,12 +17,14 @@ function getItems() {
       console.log('GET /items returns: ', items);
       items.forEach(function (item) {
         var $el = $('<li></li>');
+
         //using an if statement to check if the item has been completed prior to appending to the DOM; will append differently based on criteria;
         if (item.completed === true) {
           //use data to assign id for later use;
           $el.data('todoID', item.id);
           $el.append('<button id="delete">Delete</button>');
           $el.append('<button id="test" class="test">Update</button>');
+
           //set class for done to reflect a strike through and greyout/no-mouse click;
           $el.append('<span class="done">' + item.todo + '</span>');
           $el.append('<span class="toggleSpan">THIS TASK IS DONE!!</span>');
@@ -103,26 +105,24 @@ function todoComplete() {
 }
 
 function todoDelete() {
-
+  //add a built in dialog box;
+  if(confirm("Sure?!")){
+  //the 'correct way': div dialog box: appends a new div element with p/h tag with some buttons; on click-it removes/hides the div that was just appended;
   //data!
-  var todoID = $(this).parent().data('todoID');
+    var todoID = $(this).parent().data('todoID');
 
-  $.ajax({
-    type: 'DELETE',
-    url: '/items/' + todoID,
-    success: function () {
-      console.log('DELETE of ID ' + todoID + ' successful');
-      $('#todoList').empty();
-      getItems();
-    },
+    $.ajax({
+      type: 'DELETE',
+      url: '/items/' + todoID,
+      success: function () {
+        console.log('DELETE of ID ' + todoID + ' successful');
+        $('#todoList').empty();
+        getItems();
+      },
 
-    error: function () {
-      console.log('DELETE failed');
-    },
-  });
+      error: function () {
+        console.log('DELETE failed');
+      },
+    });
+  }
 }
-
-//this doesn't work;
-// function changeClass() {
-  // $(this).parent().children().sibling().addClass('test');
-// }
