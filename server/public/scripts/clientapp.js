@@ -6,7 +6,6 @@ $(document).ready(function () {
   $('#todoSubmit').on('click', addToList);
   $('#todoList').on('click', '#completed', todoComplete);
   $('#todoList').on('click', '#delete', todoDelete);
-
 });
 
 //GET items and append to DOM;
@@ -30,7 +29,7 @@ function getItems() {
         //strike through doesn't actually strike through.. changes class based on item.complete boolean;
         function strikeThrough() {
           if (item.completed === true) {
-            $el.append('<span class="toggleSpan">TASK IS DONE!</span>');
+            $el.append('<span class="toggleSpan">THIS TASK IS DONE!!</span>');
 
             //change class is suppoed to change the button class to not allow mouse
             //hovers and lower opacity..doesn't work;
@@ -124,6 +123,6 @@ function todoDelete() {
 }
 
 //this doesn't work;
-function changeClass() {
-  $(this).parent().children().sibling().addClass('test');
-}
+// function changeClass() {
+  // $(this).parent().children().sibling().addClass('test');
+// }

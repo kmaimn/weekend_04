@@ -1,9 +1,9 @@
 body{
-  font-family: 'Reenie Beanie', cursive;
+  font-family: 'Reenie Beanie', sans-serif;
 }
+
 header{
   border: 5px solid black;
-
 }
 
 h1{
@@ -33,6 +33,7 @@ li{
   margin-bottom: 5px;
   font-size: 35px;
 }
+
 #todoItem{
   height: 20px;
   font-size: 15px;
@@ -44,8 +45,9 @@ li{
   background-size: contain;
   padding-left: 18px;
 }
+
 #todoSubmit{
-  font-family: 'Walter Turncoat', cursive;
+  font-family: 'Walter Turncoat', sans-serif;
   font-size: 15px;
   border: 1px solid black;
   background-color: orangered;
@@ -53,7 +55,7 @@ li{
 }
 
 #completed{
-  font-family: 'Walter Turncoat', cursive;
+  font-family: 'Walter Turncoat', sans-serif;
   font-size: 15px;
   margin-right: 5px;
   background-color: limegreen;
@@ -62,13 +64,12 @@ li{
 }
 
 #delete{
-  font-family: 'Walter Turncoat', cursive;
+  font-family: 'Walter Turncoat', sans-serif;
   font-size: 15px;
-  margin: 0 5px 0 5px;
+  margin-right: 5px;
   background-color: orangered;
   border-radius: 25%;
   border: 1px solid black;
-
 }
 
 span{
@@ -84,16 +85,16 @@ span{
   padding: 0 5px 0 5px;
 }
 
-.test{
+/*.test{
   opacity: .5;
   cursor: not-allowed;
-}
+}*/
 
 .elf{
-  max-width: 15%;
+  max-height: 50%;
   float: right;
   display: inline-block;
   position: fixed;
   bottom: 0px;
-  left: 83%;
+  left: 80%;
 }
