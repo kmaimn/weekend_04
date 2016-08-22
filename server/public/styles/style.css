@@ -78,7 +78,6 @@ span{
 }
 
 .toggleSpan{
-  /*text-decoration: line-through;*/
   font-style: italic;
   border: 1px dashed black;
   background-color: limegreen;
@@ -89,6 +88,17 @@ span{
 .test{
   opacity: .5;
   cursor: not-allowed;
+  font-family: 'Walter Turncoat', sans-serif;
+  font-size: 15px;
+  margin-right: 5px;
+  background-color: limegreen;
+  border-radius: 25%;
+  border: 1px solid black;
+}
+
+.done{
+  text-decoration: line-through;
+  opacity: .5;
 }
 
 .elf{

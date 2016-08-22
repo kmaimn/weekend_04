@@ -16,29 +16,28 @@ function getItems() {
     success: function (items) {
       console.log('GET /items returns: ', items);
       items.forEach(function (item) {
-
         var $el = $('<li></li>');
-        //use data to assign id for later use;
-        $el.data('todoID', item.id);
-        $el.append('<button id="delete">Delete</button>');
-        $el.append('<button id="completed" class="completed">Update</button>');
-        $el.append('<span class="todo">' + item.todo + '</span>');
+        //using an if statement to check if the item has been completed prior to appending to the DOM; will append differently based on criteria;
+        if (item.completed === true) {
+          //use data to assign id for later use;
+          $el.data('todoID', item.id);
+          $el.append('<button id="delete">Delete</button>');
+          $el.append('<button id="test" class="test">Update</button>');
+          //set class for done to reflect a strike through and greyout/no-mouse click;
+          $el.append('<span class="done">' + item.todo + '</span>');
+          $el.append('<span class="toggleSpan">THIS TASK IS DONE!!</span>');
 
-        $('#todoList').append($el);
+          $('#todoList').append($el);
 
-        //strike through doesn't actually strike through.. changes class based on item.complete boolean;
-        function strikeThrough() {
-          if (item.completed === true) {
-            $el.append('<span class="toggleSpan">THIS TASK IS DONE!!</span>');
-            // $('.completed').toggleClass('test');
+        }else {
+          //use data to assign id for later use;
+          $el.data('todoID', item.id);
+          $el.append('<button id="delete">Delete</button>');
+          $el.append('<button id="completed" class="completed">Update</button>');
+          $el.append('<span>' + item.todo + '</span>');
 
-            //change class is suppoed to change the button class to not allow mouse
-            //hovers and lower opacity..doesn't work;
-            // changeClass();
-          }
+          $('#todoList').append($el);
         }
-
-        strikeThrough();
       });
     },
 
