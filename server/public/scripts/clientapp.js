@@ -16,13 +16,13 @@ function getItems() {
     success: function (items) {
       console.log('GET /items returns: ', items);
       items.forEach(function (item) {
-        var $el = $('<li></li>');
 
+        var $el = $('<li></li>');
         //use data to assign id for later use;
         $el.data('todoID', item.id);
         $el.append('<button id="delete">Delete</button>');
         $el.append('<button id="completed" class="completed">Update</button>');
-        $el.append('<span>' + item.todo + '</span>');
+        $el.append('<span class="todo">' + item.todo + '</span>');
 
         $('#todoList').append($el);
 
@@ -30,6 +30,7 @@ function getItems() {
         function strikeThrough() {
           if (item.completed === true) {
             $el.append('<span class="toggleSpan">THIS TASK IS DONE!!</span>');
+            $('.completed').toggleClass('test');
 
             //change class is suppoed to change the button class to not allow mouse
             //hovers and lower opacity..doesn't work;

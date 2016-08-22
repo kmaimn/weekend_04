@@ -4,6 +4,7 @@ body{
 
 header{
   border: 5px solid black;
+  background-color: azure;
 }
 
 h1{
@@ -85,10 +86,10 @@ span{
   padding: 0 5px 0 5px;
 }
 
-/*.test{
+.test{
   opacity: .5;
   cursor: not-allowed;
-}*/
+}
 
 .elf{
   max-height: 50%;

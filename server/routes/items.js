@@ -30,8 +30,8 @@ router.post('/', function (req, res) {
       res.sendStatus(500);
     }
 
-    client.query('INSERT INTO todo (todo, completed) ' +
-                'VALUES ($1, $2)', [item.todoItem, item.completed],
+    client.query('INSERT INTO todo (todo, completed, start) ' +
+                'VALUES ($1, $2, $3)', [item.todoItem, item.completed, item.timeStamp],
                 function (err, result) {
       done();
 
