@@ -2,13 +2,14 @@ $(document).ready(function () {
   // console.log('This works!')
   getItems();
 
+  //event listeners
   $('#todoSubmit').on('click', addToList);
-
   $('#todoList').on('click', '#completed', todoComplete);
   $('#todoList').on('click', '#delete', todoDelete);
 
 });
 
+//GET items and append to DOM;
 function getItems() {
   $.ajax({
     type: 'GET',
@@ -18,16 +19,21 @@ function getItems() {
       items.forEach(function (item) {
         var $el = $('<li></li>');
 
+        //use data to assign id for later use;
         $el.data('todoID', item.id);
         $el.append('<button id="delete">Delete</button>');
-        $el.append('<button id="completed" class="completed">Done</button>');
+        $el.append('<button id="completed" class="completed">Update</button>');
         $el.append('<span>' + item.todo + '</span>');
 
         $('#todoList').append($el);
 
+        //strike through doesn't actually strike through.. changes class based on item.complete boolean;
         function strikeThrough() {
           if (item.completed === true) {
             $el.append('<span class="toggleSpan">TASK IS DONE!</span>');
+
+            //change class is suppoed to change the button class to not allow mouse
+            //hovers and lower opacity..doesn't work;
             // changeClass();
           }
         }
@@ -45,6 +51,7 @@ function getItems() {
 function addToList() {
   event.preventDefault();
 
+  //upon entry, status is set to false;
   var item = {};
   item.completed = false;
 
@@ -69,6 +76,7 @@ function addToList() {
     },
   });
 
+  //clears the form and refocuses on the todo entry;
   $('#entryForm').find('input[type=text]').val('');
   $('#todoItem').focus();
 }
@@ -76,6 +84,7 @@ function addToList() {
 function todoComplete() {
   var item = {};
 
+  //data!
   var todoID = $(this).parent().data('todoID');
   console.log(todoID);
 
@@ -95,6 +104,8 @@ function todoComplete() {
 }
 
 function todoDelete() {
+
+  //data!
   var todoID = $(this).parent().data('todoID');
 
   $.ajax({
@@ -112,6 +123,7 @@ function todoDelete() {
   });
 }
 
-function changeClass () {
+//this doesn't work;
+function changeClass() {
   $(this).parent().children().sibling().addClass('test');
 }
